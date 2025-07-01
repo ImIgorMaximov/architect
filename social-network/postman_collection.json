@@ -1,0 +1,39 @@
+{
+  "info": {
+    "name": "Social Network API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"first_name\":\"Igor\",\"last_name\":\"Maksimov\",\"birth_date\":\"2000-03-07\",\"gender\":\"male\",\"interests\":\"sports, music\",\"city\":\"Moscow\",\"username\":\"imx\",\"password\":\"1234\"}"
+        },
+        "url": {"raw": "http://localhost:8080/user/register", "host": ["localhost:8080"], "path": ["user", "register"]}
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"imx\",\"password\":\"1234\"}"
+        },
+        "url": {"raw": "http://localhost:8080/login", "host": ["localhost:8080"], "path": ["login"]}
+      }
+    },
+    {
+      "name": "Get User by ID",
+      "request": {
+        "method": "GET",
+        "url": {"raw": "http://localhost:8080/user/get/1", "host": ["localhost:8080"], "path": ["user", "get", "5"]}
+      }
+    }
+  ]
+}
