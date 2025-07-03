@@ -8,32 +8,66 @@
       "name": "Register User",
       "request": {
         "method": "POST",
-        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
         "body": {
           "mode": "raw",
-          "raw": "{\"first_name\":\"Igor\",\"last_name\":\"Maksimov\",\"birth_date\":\"2000-03-07\",\"gender\":\"male\",\"interests\":\"sports, music\",\"city\":\"Moscow\",\"username\":\"imx\",\"password\":\"1234\"}"
+          "raw": "{\n  \"first_name\": \"Igor\",\n  \"last_name\": \"Maksimov\",\n  \"birth_date\": \"2000-03-07\",\n  \"gender\": \"male\",\n  \"interests\": \"sports, music\",\n  \"city\": \"Moscow\",\n  \"username\": \"imx\",\n  \"password\": \"1234\"\n}"
         },
-        "url": {"raw": "http://localhost:8080/user/register", "host": ["localhost:8080"], "path": ["user", "register"]}
+        "url": {
+          "raw": "http://localhost:8080/user/register",
+          "protocol": "http",
+          "host": ["localhost:8080"],
+          "path": ["user", "register"]
+        }
       }
     },
     {
-      "name": "Login",
+      "name": "Login (Get JWT)",
       "request": {
         "method": "POST",
-        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
         "body": {
           "mode": "raw",
-          "raw": "{\"username\":\"imx\",\"password\":\"1234\"}"
+          "raw": "{\n  \"username\": \"imx\",\n  \"password\": \"1234\"\n}"
         },
-        "url": {"raw": "http://localhost:8080/login", "host": ["localhost:8080"], "path": ["login"]}
+        "url": {
+          "raw": "http://localhost:8080/login",
+          "protocol": "http",
+          "host": ["localhost:8080"],
+          "path": ["login"]
+        }
       }
     },
     {
-      "name": "Get User by ID",
+      "name": "Get User by ID (auth required)",
       "request": {
         "method": "GET",
-        "url": {"raw": "http://localhost:8080/user/get/1", "host": ["localhost:8080"], "path": ["user", "get", "5"]}
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{jwt_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/user/get/1",
+          "protocol": "http",
+          "host": ["localhost:8080"],
+          "path": ["user", "get", "1"]
+        }
       }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "key": "jwt_token",
+      "value": "PASTE_TOKEN_HERE_AFTER_LOGIN"
     }
   ]
 }
+

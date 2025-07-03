@@ -15,7 +15,7 @@
     ```
 3. Запустите сервер:
     ```
-    go run cmd/main.go internal/handlers.go internal/db.go internal/models.go
+    go run ./cmd
     ```
 Сервер будет доступен на `http://localhost:8080`.
 

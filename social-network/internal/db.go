@@ -1,4 +1,4 @@
-package main
+package db
 
 import (
 	"database/sql"
@@ -11,14 +11,16 @@ import (
 var DB *sql.DB
 
 func InitDB() {
-	var err error
 	connStr := os.Getenv("DB_CONN")
+	var err error
 	DB, err = sql.Open("postgres", connStr)
 	if err != nil {
-		log.Fatal("DB connection error: ", err)
+		log.Fatalf("Failed to open DB connection: %v", err)
 	}
-	err = DB.Ping()
-	if err != nil {
-		log.Fatal("DB ping error: ", err)
+
+	if err = DB.Ping(); err != nil {
+		log.Fatalf("Failed to connect to DB: %v", err)
 	}
+
+	log.Println("Connected to PostgreSQL")
 }
